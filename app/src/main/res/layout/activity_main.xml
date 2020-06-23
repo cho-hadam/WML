@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".50"
+        android:background="@drawable/nav_main"
         android:text="Calendar"/>
 
     <Button
@@ -19,6 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".50"
+        android:background="@drawable/nav_sub"
         android:text="Diary"/>
 
 </LinearLayout>
