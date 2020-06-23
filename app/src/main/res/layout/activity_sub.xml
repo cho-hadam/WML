@@ -24,16 +24,8 @@
         android:background="@drawable/nav_sub"
         android:text="Diary"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 </LinearLayout>
+
 
 
