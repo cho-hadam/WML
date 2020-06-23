@@ -3,6 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -12,17 +13,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".50"
-        android:text="Calendar"/>
+        android:background="@drawable/nav_main"
+        android:text="Calendar" />
 
     <Button
         android:id="@+id/btn_diary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".50"
+        android:background="@drawable/nav_sub"
         android:text="Diary"/>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>
+
+
