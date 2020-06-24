@@ -43,6 +43,7 @@ public class diary_list_adapter extends BaseAdapter {
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         diary_list listViewItem = diaryListsItemList.get(position);
 
+
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());
         descTextView.setText(listViewItem.getDate());
@@ -70,4 +71,5 @@ public class diary_list_adapter extends BaseAdapter {
 
         diaryListsItemList.add(item);
     }
+
 }

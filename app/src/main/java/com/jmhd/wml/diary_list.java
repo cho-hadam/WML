@@ -16,4 +16,5 @@ public class diary_list {
     public String getDate() {
         return this.date ;
     }
+
 }
