@@ -31,7 +31,10 @@ public class SubActivity extends AppCompatActivity {
                 overridePendingTransition(0,0);
             }
         });
+        SetDiary_list();
 
+    }
+    public void SetDiary_list(){
         list = (ListView)findViewById(R.id.diary_list);
         List<String> data = new ArrayList<>();
 
