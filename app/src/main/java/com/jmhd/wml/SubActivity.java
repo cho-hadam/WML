@@ -45,10 +45,10 @@ public class SubActivity extends AppCompatActivity {
         diary_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(SubActivity.this, DiaryActivity.class);intent.addFlags(intent.FLAG_ACTIVITY_NO_ANIMATION);
+                Intent intent = new Intent(SubActivity.this, DiaryActivity.class);
+                intent.addFlags(intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 overridePendingTransition(0,0);
-                SubActivity.this.finish();
             }
         });
 
