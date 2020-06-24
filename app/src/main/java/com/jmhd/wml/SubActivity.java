@@ -14,7 +14,8 @@ import java.util.List;
 
 public class SubActivity extends AppCompatActivity {
     private Button btn_calendar;
-    private ListView list;
+    private ListView diary_list;
+    diary_list_adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +33,17 @@ public class SubActivity extends AppCompatActivity {
                 SubActivity.this.finish();
             }
         });
-        SetDiary_list();
+        diary_list_view();
+
 
     }
-    public void SetDiary_list(){
-        list = (ListView)findViewById(R.id.diary_list);
-        List<String> data = new ArrayList<>();
+    public void diary_list_view(){
+        adapter = new diary_list_adapter();
+        diary_list = (ListView) findViewById(R.id.diary_list);
+        diary_list.setAdapter(adapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
-        list.setAdapter(adapter);
-
-        data.add("점심 두 그릇 먹은 날");
-        data.add("제목 못 정한 날");
-        data.add("저녁은 치킨");
-        data.add("다연이랑 데이트");
-        data.add("체육 너무 힘든 날");
-        data.add("증명사진 찍으러 간날");
-        data.add("프로젝트 시작");
-        data.add("치킨 먹고 싶다");
-        data.add("청년다방 맛있다");
-        data.add("힘든 지민이");
-        adapter.notifyDataSetChanged();
+        adapter.addItem("점심 두 그릇 먹은 날", "20200624");
+        adapter.addItem("제목 못 정한 날", "20200625");
     }
+
 }
