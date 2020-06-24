@@ -17,14 +17,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:background="@drawable/nav_sub"
+            android:background="#A8A8A8"
             android:text="Calendar"/>
         <Button
             android:id="@+id/btn_diary"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:background="@drawable/nav_main"
+            android:background="#898989"
             android:text="Diary"/>
     </LinearLayout>
     <LinearLayout

@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:background="@drawable/nav_main"
+            android:background="#898989"
             android:text="Calendar"/>
 
         <Button
@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:background="@drawable/nav_sub"
+            android:background="#A8A8A8"
             android:text="Diary"/>
 
     </LinearLayout>
@@ -37,6 +37,98 @@
         android:layout_height="0dp"
         android:layout_weight="9"
         android:orientation="vertical" >
+
+        <!-- 헤더 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{(v)->model.startPicker(v)}"
+                android:padding="16dp"
+                android:text="@{model.mTitle}"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <!-- 요일 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#eaeae9"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="S"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="M"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="T"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="W"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="T"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="F"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="S"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+        <!-- 달력 뷰 -->
+        <view class="androidx.appcompat.app.AlertController$RecycleListView"
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </view>
 
     </LinearLayout>
 
