@@ -29,6 +29,7 @@ public class SubActivity extends AppCompatActivity {
                 intent.addFlags(intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 overridePendingTransition(0,0);
+                SubActivity.this.finish();
             }
         });
         SetDiary_list();
