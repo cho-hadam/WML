@@ -71,4 +71,3 @@ public class diary_list_adapter extends BaseAdapter {
         diaryListsItemList.add(item);
     }
 }
-
