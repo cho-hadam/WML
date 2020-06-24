@@ -43,17 +43,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
-            android:background="@color/colorPrimary"
+            android:background="#ffffff"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="@{(v)->model.startPicker(v)}"
-                android:padding="16dp"
-                android:text="@{model.mTitle}"
-                android:textSize="18sp" />
+
 
         </LinearLayout>
 
@@ -123,12 +116,7 @@
         </LinearLayout>
 
         <!-- 달력 뷰 -->
-        <view class="androidx.appcompat.app.AlertController$RecycleListView"
-            android:id="@+id/calendar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-        </view>
 
     </LinearLayout>
 

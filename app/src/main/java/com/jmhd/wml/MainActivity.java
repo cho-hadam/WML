@@ -1,20 +1,14 @@
 package com.jmhd.wml;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-
 public class MainActivity extends AppCompatActivity {
     private Button btn_diary;
-    private MutableLiveData<ArrayList<Object>> mCalendarList = new MutableLiveData<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,20 +30,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setCalendarList() {
-        GregorianCalendar cal = new GregorianCalendar(); // 오늘 날짜
 
-        ArrayList<Object> calendarList = new ArrayList<>();
-
-        for (int i = -300; i < 300; i++) {
-            try {
-                GregorianCalendar calendar = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + i, 1, 0, 0, 0);
-
-                calendarList.add(calendar.getTimeInMillis()); // 날짜 타입
-
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
