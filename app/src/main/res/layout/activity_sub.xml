@@ -12,20 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
+
         <Button
             android:id="@+id/btn_calendar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
             android:background="#A8A8A8"
-            android:text="Calendar"/>
+            android:text="Calendar"
+            android:textAllCaps="false" />
+
         <Button
             android:id="@+id/btn_diary"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
             android:background="#898989"
-            android:text="Diary"/>
+            android:text="Diary"
+            android:textAllCaps="false" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
