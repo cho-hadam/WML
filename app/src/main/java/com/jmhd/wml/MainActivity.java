@@ -14,6 +14,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn_diary;
+    private Button btn_view;
     private TextView text_month;
     private ImageButton btn_back;
     private ImageButton btn_next;
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         btn_diary = (Button) findViewById(R.id.btn_diary);
         btn_diary.setOnClickListener(goSub);
 
+        btn_view = (Button) findViewById(R.id.btn_view);
+        btn_view.setOnClickListener(goDiary);
+
         text_month = (TextView) findViewById(R.id.text_month);
         setDate(text_month, 0);
 
@@ -53,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             overridePendingTransition(0,0);
             MainActivity.this.finish();
+        }
+    };
+
+    Button.OnClickListener goDiary = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, DiaryActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+            overridePendingTransition(0,0);
         }
     };
 
