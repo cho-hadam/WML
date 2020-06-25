@@ -19,16 +19,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btn_diary = (Button) findViewById(R.id.btn_diary);
-        btn_diary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-                overridePendingTransition(0,0);
-                MainActivity.this.finish();
-            }
-        });
-
+        btn_diary.setOnClickListener(goSub);
     }
+
+    Button.OnClickListener goSub = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, SubActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+            overridePendingTransition(0,0);
+            MainActivity.this.finish();
+        }
+    };
 }
