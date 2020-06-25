@@ -8,7 +8,8 @@
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".MainActivity">
-    
+
+    <!-- nav -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -73,6 +74,12 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#A8A8A8" />
+
+        <!-- 요일 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -146,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="7" >
+            android:layout_weight="3.5" >
 
             <GridView
                 android:id="@+id/gridview"
@@ -154,6 +161,32 @@
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:numColumns="7" />
+
+        </LinearLayout>
+
+        <!-- 클릭 시 메뉴 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:background="#A8A8A8"
+            android:orientation="vertical"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_write"
+                android:text="Write My Life"
+                android:background="#C4C4C4"
+                android:layout_width="230dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btn_view"
+                android:text="View My Life"
+                android:background="#C4C4C4"
+                android:layout_width="230dp"
+                android:layout_height="50dp"/>
 
         </LinearLayout>
 
