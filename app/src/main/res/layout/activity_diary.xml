@@ -27,6 +27,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="18dp"
                 android:text="다연이랑 데이트"/>
 
             <ImageButton
