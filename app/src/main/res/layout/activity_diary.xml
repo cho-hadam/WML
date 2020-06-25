@@ -12,15 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#a8a8a8" >
+        android:weightSum="4"
+        android:background="#a8a8a8">
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#a8a8a8"
+                android:src="@drawable/btn_back"/>
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="다연이랑 데이트"/>
+
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="#a8a8a8"
+                android:layout_weight="1"
+                android:src="@drawable/btn_menu" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9" >
+        android:layout_weight="9">
 
     </LinearLayout>
+
 
 </LinearLayout>
