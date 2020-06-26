@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:orientation="vertical"
+    tools:context=".WriteActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4"
+        android:background="#a8a8a8">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#a8a8a8"
+            android:src="@drawable/btn_back"/>
+        <TextView
+            android:id="@+id/text_write_date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#a8a8a8"
+            android:layout_weight="1"
+            android:src="@drawable/btn_save" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical"
+        android:weightSum="5"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/input_title"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:maxLength="17"
+            android:textColorHint="#A8A8A8"
+            android:hint="    제목을 입력하세요." />
+        
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/border_edit_text"
+            android:hint="\n    내용을 입력하세요."
+            android:gravity="top"/>
+
+    </LinearLayout>
+
+</LinearLayout>

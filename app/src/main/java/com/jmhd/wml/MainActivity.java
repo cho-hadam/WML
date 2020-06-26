@@ -16,6 +16,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
     private Button btn_diary;
     private Button btn_view;
+    private Button btn_write;
     private TextView text_header;
     private ImageButton btn_back;
     private ImageButton btn_next;
@@ -37,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         // nav button onClick
         btn_diary.setOnClickListener(goSub);
+
+        // ~ my life button
         btn_view.setOnClickListener(goDiary);
+        btn_write.setOnClickListener(goWrite);
 
         // calender 년월 setText
         setHeader(0);
@@ -57,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         // nav button 가져오기
         btn_diary = (Button) findViewById(R.id.btn_diary);
+
+        // ~ my life button 가져오기
         btn_view = (Button) findViewById(R.id.btn_view);
+        btn_write = (Button) findViewById(R.id.btn_write);
 
         // calendar header 가져오기 (양 옆 화살표 버튼, 년월 텍스트)
         text_header = (TextView) findViewById(R.id.text_header);
@@ -79,10 +86,21 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.finish();
         }
     };
+
+    // ~ my life button onClick
     Button.OnClickListener goDiary = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, DiaryActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+            overridePendingTransition(0,0);
+        }
+    };
+    Button.OnClickListener goWrite = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, WriteActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
             overridePendingTransition(0,0);
