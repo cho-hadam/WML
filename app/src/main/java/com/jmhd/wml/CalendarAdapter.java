@@ -2,6 +2,7 @@ package com.jmhd.wml;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -35,20 +36,20 @@ public class CalendarAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        int maxDate = getMaxDate();
-        Log.d("MyLog",String.valueOf(convertView));
-
+        Log.d("MyLog","확인");
         if (convertView == null) {
-            for (int i = 1; i <= maxDate; i++) {
-                date = new TextView(context);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.calendar_date, parent, false);
+            date = (TextView) convertView.findViewById(R.id.text_date);
+
+            for (int i = 1; i <= getMaxDate(); i++) {
                 date.setText(i);
-                Log.d("day", String.valueOf(i));
             }
         } else {
             date = (TextView) convertView;
         }
 
-        return date;
+        return convertView;
     }
 
     private int getMaxDate() {
