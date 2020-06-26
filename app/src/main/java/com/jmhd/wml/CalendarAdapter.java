@@ -58,7 +58,8 @@ public class CalendarAdapter extends BaseAdapter {
 
         date = (TextView) convertView.findViewById(R.id.text_date);
 
-//        Date dateViewItem = dateArrayList.get(position);
+        Date dateViewItem = dateArrayList.get(position);
+        date.setText(dateViewItem.getDate());
 
         return convertView;
     }
@@ -70,10 +71,10 @@ public class CalendarAdapter extends BaseAdapter {
     }
 
     public void setDate() {
-        Date d = new Date();
         for (int i = 1; i <= getMaxDate(); i++) {
+            Date d = new Date();
             d.setDate(i);
+            dateArrayList.add(d);
         }
-        dateArrayList.add(d);
     }
 }
