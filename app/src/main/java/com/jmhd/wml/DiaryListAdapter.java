@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class diary_list_adapter extends BaseAdapter {
+public class DiaryListAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<diary_list> diaryListsItemList = new ArrayList<diary_list>() ;
+    private ArrayList<DiaryList> diaryListsItemList = new ArrayList<DiaryList>() ;
 
     // ListViewAdapter의 생성자
-    public diary_list_adapter() {
+    public DiaryListAdapter() {
 
     }
 
@@ -41,7 +41,7 @@ public class diary_list_adapter extends BaseAdapter {
         TextView descTextView = (TextView) convertView.findViewById(R.id.dateText) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        diary_list listViewItem = diaryListsItemList.get(position);
+        DiaryList listViewItem = diaryListsItemList.get(position);
 
 
         // 아이템 내 각 위젯에 데이터 반영
@@ -65,7 +65,7 @@ public class diary_list_adapter extends BaseAdapter {
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
     public void addItem(String title, String date) {
-        diary_list item = new diary_list();
+        DiaryList item = new DiaryList();
         item.setTitle(title);
         item.setDesc(date);
 

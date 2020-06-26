@@ -1,6 +1,6 @@
 package com.jmhd.wml;
 
-public class diary_list {
+public class DiaryList {
     private String title;
     private String date ;
 

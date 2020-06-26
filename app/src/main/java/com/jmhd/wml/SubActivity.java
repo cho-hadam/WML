@@ -6,17 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SubActivity extends AppCompatActivity {
     private Button btn_calendar;
     private ListView diary_list;
-    diary_list_adapter adapter;
+    DiaryListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +35,7 @@ public class SubActivity extends AppCompatActivity {
 
     }
     public void diary_list_view(){
-        adapter = new diary_list_adapter();
+        adapter = new DiaryListAdapter();
         diary_list = (ListView) findViewById(R.id.diary_list);
         diary_list.setAdapter(adapter);
         diary_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
