@@ -59,7 +59,7 @@ public class CalendarAdapter extends BaseAdapter {
         date = (TextView) convertView.findViewById(R.id.text_date);
 
         Date dateViewItem = dateArrayList.get(position);
-        date.setText(dateViewItem.getDate());
+        date.setText(String.valueOf(dateViewItem.getDate()));
 
         return convertView;
     }
