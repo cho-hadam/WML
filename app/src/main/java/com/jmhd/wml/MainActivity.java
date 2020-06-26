@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btn_next;
     private int year;
     private int get_month;
+    private GridView view_calendar;
 
     public MainActivity() {
     }
@@ -40,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
         // calendar header arrow button onClick
         btn_back.setOnClickListener(backMonth);
         btn_next.setOnClickListener(nextMonth);
+
+        // calendar grid view adapter 설정
+        CalendarAdapter calendarAdapter = new CalendarAdapter(this);
+        view_calendar.setAdapter(calendarAdapter);
     }
 
     protected void defineVar() {
@@ -56,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         text_header = (TextView) findViewById(R.id.text_header);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_next = (ImageButton) findViewById(R.id.btn_next);
+
+        // calendar grid view 가져오기
+        view_calendar = (GridView) findViewById(R.id.view_calendar);
     }
 
     // nav button onClick
@@ -126,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 get_month = 11; // 월 초기화 (12월)
             }
         }
+
         // 년월 TextView에 setText
         text_header.setText(month_en[get_month] + " " + String.valueOf(year));
-
     }
 }
