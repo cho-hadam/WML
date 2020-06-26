@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -45,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btn_next.setOnClickListener(nextMonth);
 
         // calendar grid view adapter 설정
-        calendarAdapter = new CalendarAdapter(MainActivity.this);
-        view_calendar.setAdapter(calendarAdapter);
-        calendarAdapter.setDate();
+        setCalendarAdapter();
     }
 
     protected void defineVar() {
@@ -95,14 +94,22 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             setHeader(-1);
+            setCalendarAdapter();
         }
     };
     Button.OnClickListener nextMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             setHeader(1);
+            setCalendarAdapter();
         }
     };
+
+    private void setCalendarAdapter() {
+        calendarAdapter = new CalendarAdapter(MainActivity.this);
+        view_calendar.setAdapter(calendarAdapter);
+        calendarAdapter.setDate(year, get_month);
+    }
 
     // calendar header 가져오기 (양 옆 화살표 버튼, 년월 텍스트)
     protected void setHeader(int click) { // back or next click flag
