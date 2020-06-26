@@ -52,15 +52,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:visibility="gone"
             android:orientation="vertical" >
 
             <Button
+                android:id="@+id/btn_edit"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:background="#C4C4C4"
                 android:text="수정" />
 
             <Button
+                android:id="@+id/btn_delete"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:background="#C4C4C4"

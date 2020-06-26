@@ -12,6 +12,7 @@ public class DiaryActivity extends AppCompatActivity {
     private ImageButton btn_back;
     private LinearLayout layout;
     private ImageButton btn_menu;
+    private Button btn_edit, btn_delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,9 @@ public class DiaryActivity extends AppCompatActivity {
         btn_menu = (ImageButton)findViewById(R.id.btn_menu);
         btn_menu.setOnClickListener(menu);
         layout = (LinearLayout)findViewById(R.id.LinearLayout_menu);
-        layout.setVisibility(View.GONE);
+        btn_edit = (Button)findViewById(R.id.btn_edit);
+        btn_delete = (Button)findViewById(R.id.btn_delete);
+
     }
 
     Button.OnClickListener backDiary = new View.OnClickListener() {
@@ -34,7 +37,11 @@ public class DiaryActivity extends AppCompatActivity {
     Button.OnClickListener menu = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-            layout.setVisibility(View.VISIBLE);
+            if(layout.getVisibility() == view.GONE) {
+                layout.setVisibility(view.VISIBLE);
+            } else {
+                layout.setVisibility(view.GONE);
+            }
         }
     };
 
