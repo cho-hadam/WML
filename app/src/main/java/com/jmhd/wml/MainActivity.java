@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         btn_view.setOnClickListener(goDiary);
 
         // calender 년월 setText
-        setDate(0);
+        setHeader(0);
         // calendar header arrow button onClick
         btn_back.setOnClickListener(backMonth);
         btn_next.setOnClickListener(nextMonth);
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         // calendar grid view adapter 설정
         calendarAdapter = new CalendarAdapter(MainActivity.this);
         view_calendar.setAdapter(calendarAdapter);
+        calendarAdapter.setDate();
     }
 
     protected void defineVar() {
@@ -93,18 +94,18 @@ public class MainActivity extends AppCompatActivity {
     Button.OnClickListener backMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            setDate(-1);
+            setHeader(-1);
         }
     };
     Button.OnClickListener nextMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            setDate(1);
+            setHeader(1);
         }
     };
 
     // calendar header 가져오기 (양 옆 화살표 버튼, 년월 텍스트)
-    protected void setDate(int click) { // back or next click flag
+    protected void setHeader(int click) { // back or next click flag
         // 구한 month(0~11)에 대한 영어 version
         String[] month_en = {
                 "Junuary",

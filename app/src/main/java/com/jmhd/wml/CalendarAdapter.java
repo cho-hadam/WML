@@ -8,9 +8,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
+class Date {
+    private int date;
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
+}
+
 public class CalendarAdapter extends BaseAdapter {
+    private ArrayList<Date> dateArrayList = new ArrayList<Date>() ;
     // activity 참조
     Context context = null;
     TextView date = null;
@@ -21,12 +35,12 @@ public class CalendarAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return dateArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return dateArrayList.get(position);
     }
 
     @Override
@@ -40,21 +54,26 @@ public class CalendarAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.calendar_date, parent, false);
-            date = (TextView) convertView.findViewById(R.id.text_date);
-
-            for (int i = 1; i <= getMaxDate(); i++) {
-                date.setText(i);
-            }
-        } else {
-            date = (TextView) convertView;
         }
+
+        date = (TextView) convertView.findViewById(R.id.text_date);
+
+//        Date dateViewItem = dateArrayList.get(position);
 
         return convertView;
     }
 
-    private int getMaxDate() {
+    protected int getMaxDate() {
         Calendar calendar = Calendar.getInstance();
         int maxDate = calendar.getActualMaximum(Calendar.DATE);
         return maxDate;
+    }
+
+    public void setDate() {
+        Date d = new Date();
+        for (int i = 1; i <= getMaxDate(); i++) {
+            d.setDate(i);
+        }
+        dateArrayList.add(d);
     }
 }
