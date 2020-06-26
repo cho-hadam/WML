@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,7 +14,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
     private Button btn_diary;
     private Button btn_view;
-    private TextView text_month;
+    private TextView text_header;
     private ImageButton btn_back;
     private ImageButton btn_next;
     private int year;
@@ -29,26 +28,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 변수들 값 가져오기
+        defineVar();
+
+        // nav button onClick
+        btn_diary.setOnClickListener(goSub);
+        btn_view.setOnClickListener(goDiary);
+
+        // calender 년월 setText
+        setDate(0);
+        // calendar header arrow button onClick
+        btn_back.setOnClickListener(backMonth);
+        btn_next.setOnClickListener(nextMonth);
+    }
+
+    protected void defineVar() {
+        // 캘린더 인스턴스 생성, 년도, 0~11 사이의 월 구하기 (month의 인덱스)
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         get_month = calendar.get(Calendar.MONTH);
 
+        // nav button 가져오기
         btn_diary = (Button) findViewById(R.id.btn_diary);
-        btn_diary.setOnClickListener(goSub);
-
         btn_view = (Button) findViewById(R.id.btn_view);
-        btn_view.setOnClickListener(goDiary);
 
-        text_month = (TextView) findViewById(R.id.text_month);
-        setDate(text_month, 0);
-
+        // calendar header 가져오기 (양 옆 화살표 버튼, 년월 텍스트)
+        text_header = (TextView) findViewById(R.id.text_header);
         btn_back = (ImageButton) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(backMonth);
-
         btn_next = (ImageButton) findViewById(R.id.btn_next);
-        btn_next.setOnClickListener(nextMonth);
     }
 
+    // nav button onClick
     Button.OnClickListener goSub = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -59,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.finish();
         }
     };
-
     Button.OnClickListener goDiary = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -70,21 +79,23 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // calendar header arrow button onClick
     Button.OnClickListener backMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            setDate(text_month, -1);
+            setDate(-1);
         }
     };
-
     Button.OnClickListener nextMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            setDate(text_month, 1);
+            setDate(1);
         }
     };
 
-    protected void setDate(TextView text_month, int click) {
+    // calendar header 가져오기 (양 옆 화살표 버튼, 년월 텍스트)
+    protected void setDate(int click) { // back or next click flag
+        // 구한 month(0~11)에 대한 영어 version
         String[] month_en = {
                 "Junuary",
                 "February",
@@ -100,33 +111,23 @@ public class MainActivity extends AppCompatActivity {
                 "December"
         };
 
-        String month = month_en[get_month];
-
-        if(click == 0) {
-            text_month.setText(month + " " + String.valueOf(year));
-
-        } else if (click == 1) {
-            if (get_month != 11) {
-                get_month += 1;
-                month = month_en[get_month];
-            } else {
-                year += 1;
-                get_month = 0;
-                month = month_en[get_month];
+        if (click == 1) { // next button click
+            if (get_month != 11) { // 12월이 아닐 경우
+                get_month += 1; // 월 인덱스 증가
+            } else { // 12월일 경우
+                year += 1; // 년도 증가
+                get_month = 0; // 월 초기화 (1월)
             }
-            text_month.setText(month + " " + String.valueOf(year));
-
-        } else {
-            if (get_month != 0) {
-                get_month -= 1;
-                month = month_en[get_month];
-            } else {
-                year -= 1;
-                get_month = 11;
-                month = month_en[get_month];
+        } else if (click == -1) { // back button click
+            if (get_month != 0) { // 1월이 아닐 경우
+                get_month -= 1; // 월 인덱스 감소
+            } else { // 1월일 경우
+                year -= 1; // 년도 감소
+                get_month = 11; // 월 초기화 (12월)
             }
-            text_month.setText(month + " " + String.valueOf(year));
         }
+        // 년월 TextView에 setText
+        text_header.setText(month_en[get_month] + " " + String.valueOf(year));
 
     }
 }
