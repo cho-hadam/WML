@@ -42,11 +42,38 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/LinearLayout_menu"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        >
 
+        <view
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="수정" />
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="삭제" />
+        </LinearLayout>
     </LinearLayout>
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>
