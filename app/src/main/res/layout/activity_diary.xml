@@ -43,11 +43,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LinearLayout_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_weight="9">
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical" >
 
             <Button
                 android:layout_width="130dp"
@@ -61,11 +66,8 @@
                 android:background="#C4C4C4"
                 android:text="삭제" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+    </LinearLayout>
 
 </LinearLayout>
