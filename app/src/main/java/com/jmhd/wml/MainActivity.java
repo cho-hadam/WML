@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private int year;
     private int get_month;
     private GridView view_calendar;
+    private CalendarAdapter calendarAdapter;
 
     public MainActivity() {
     }
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btn_next.setOnClickListener(nextMonth);
 
         // calendar grid view adapter 설정
-        CalendarAdapter calendarAdapter = new CalendarAdapter(this);
+        calendarAdapter = new CalendarAdapter(MainActivity.this);
         view_calendar.setAdapter(calendarAdapter);
     }
 

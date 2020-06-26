@@ -36,6 +36,7 @@ public class CalendarAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         int maxDate = getMaxDate();
+        Log.d("MyLog",String.valueOf(convertView));
 
         if (convertView == null) {
             for (int i = 1; i <= maxDate; i++) {
