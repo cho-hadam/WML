@@ -1,6 +1,6 @@
 package com.jmhd.wml;
 
-class Date {
+class DateView {
     private int date;
     private String textColor;
 
