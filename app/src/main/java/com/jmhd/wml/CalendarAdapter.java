@@ -2,6 +2,7 @@ package com.jmhd.wml;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +54,6 @@ public class CalendarAdapter extends BaseAdapter {
         // ArrayList에서 한 개 뽑아옴
         DateView dateViewItem = dateArrayList.get(position);
 
-        // onClick event 설정
-        date.setOnClickListener(new DateClickListener(context, date));
-
         // 날짜 설정
         date.setText(String.valueOf(dateViewItem.getDate()));
 
@@ -66,6 +64,10 @@ public class CalendarAdapter extends BaseAdapter {
             // TextView에 투명으로 설정
             date.setTextColor(0x000000);
         }
+
+        // onClick event 설정
+        String dateinfo = String.valueOf(year)+String.valueOf(get_month+1);
+        date.setOnClickListener(new DateClickListener(context, date, dateinfo));
 
         return convertView;
     }
