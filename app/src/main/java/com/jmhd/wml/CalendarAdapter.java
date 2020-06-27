@@ -54,7 +54,7 @@ public class CalendarAdapter extends BaseAdapter {
         DateView dateViewItem = dateArrayList.get(position);
 
         // onClick event 설정
-        date.setOnClickListener(new DateClickListener(context));
+        date.setOnClickListener(new DateClickListener(context, date));
 
         // 날짜 설정
         date.setText(String.valueOf(dateViewItem.getDate()));
