@@ -25,6 +25,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public void insert(String date, String title, String content, byte[] picture){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("INSERT INTO DIARY VALUES(" + date + ", " + title + ", " + content + ", " + picture);
+        db.close();
+    }
+
+
     public void update(String date, String title, String content){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("UPDATE DIARY SET title = " + title + ", content = " + content + " WHERE date = " + date + ";");
