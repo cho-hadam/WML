@@ -2,7 +2,6 @@ package com.jmhd.wml;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CalendarAdapter extends BaseAdapter {
-    private ArrayList<Date> dateArrayList = new ArrayList<Date>() ;
+    private ArrayList<DateView> dateArrayList = new ArrayList<DateView>() ;
     Context context = null;
     TextView date = null;
     private int year;
@@ -52,10 +51,10 @@ public class CalendarAdapter extends BaseAdapter {
         date = (TextView) convertView.findViewById(R.id.text_date);
 
         // ArrayList에서 한 개 뽑아옴
-        Date dateViewItem = dateArrayList.get(position);
+        DateView dateViewItem = dateArrayList.get(position);
 
         // onClick event 설정
-        date.setOnClickListener(new DateClickListener(context));
+        date.setOnClickListener(new DateClickListener(context, date));
 
         // 날짜 설정
         date.setText(String.valueOf(dateViewItem.getDate()));
@@ -101,7 +100,7 @@ public class CalendarAdapter extends BaseAdapter {
     public void emptyDate() {
         // 시작하는 요일(1~7)까지 반복
         for (int i = 1; i < getStartDayOfWeek(); i++) {
-            Date empty = new Date();
+            DateView empty = new DateView();
             // 0일로 설정
             empty.setDate(0);
             // 실제로 Color는 getView에서 설정함. 임의로 0
@@ -118,7 +117,7 @@ public class CalendarAdapter extends BaseAdapter {
 
         // 1일부터 그 달의 마지막 날짜까지 반복
         for (int i = 1; i <= getMaxDate(); i++) {
-            Date d = new Date();
+            DateView d = new DateView();
             // 1일부터 마지막 날짜까지 증가하는 i
             d.setDate(i);
             d.setTextColor(getTextColor(i));
