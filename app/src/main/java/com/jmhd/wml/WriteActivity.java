@@ -30,8 +30,7 @@ public class WriteActivity extends AppCompatActivity {
         public void onClick(View view) {
             input_title = (EditText)findViewById(R.id.input_title);
             input_content = (EditText)findViewById(R.id.input_content);
-            db.insert();
-
+            //db.insert(date, input_title, input_content);
         }
     };
 

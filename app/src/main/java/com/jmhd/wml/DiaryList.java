@@ -7,9 +7,7 @@ public class DiaryList {
     public void setTitle(String title) {
         this.title = title ;
     }
-    public void setDesc(String date) {
-        this.date = date ;
-    }
+    public void setDesc(String date) { this.date = date ; }
     public String getTitle() {
         return this.title ;
     }

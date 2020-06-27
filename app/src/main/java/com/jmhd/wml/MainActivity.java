@@ -167,4 +167,7 @@ public class MainActivity extends AppCompatActivity {
         // 년월 TextView에 setText
         text_header.setText(month_en[get_month] + " " + String.valueOf(year));
     }
+    public String getDate(){
+
+    }
 }
