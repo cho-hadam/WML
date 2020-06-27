@@ -168,6 +168,6 @@ public class MainActivity extends AppCompatActivity {
         text_header.setText(month_en[get_month] + " " + String.valueOf(year));
     }
     public String getDate(){
-
+        return null;
     }
 }

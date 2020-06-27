@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,12 +19,14 @@ public class CalendarAdapter extends BaseAdapter {
     TextView date = null;
     private int year;
     private int get_month;
+    DateInfo dateinfo;
 
     // Constructor
     public CalendarAdapter(Context context, int year, int get_month) {
         this.context = context;
         this.year = year;
         this.get_month = get_month;
+        dateinfo = new DateInfo(String.valueOf(year),String.valueOf(get_month+1));
     }
 
     @Override
@@ -51,8 +54,13 @@ public class CalendarAdapter extends BaseAdapter {
         // calendar_date.xml에 있는 TextView
         date = (TextView) convertView.findViewById(R.id.text_date);
 
+
         // ArrayList에서 한 개 뽑아옴
         DateView dateViewItem = dateArrayList.get(position);
+
+        LinearLayout round = (LinearLayout)date.getParent();
+        round.setTag(String.valueOf(dateViewItem.getDate()));
+
 
         // 날짜 설정
         date.setText(String.valueOf(dateViewItem.getDate()));
@@ -66,7 +74,6 @@ public class CalendarAdapter extends BaseAdapter {
         }
 
         // onClick event 설정
-        String dateinfo = String.valueOf(year)+String.valueOf(get_month+1);
         date.setOnClickListener(new DateClickListener(context, date, dateinfo));
 
         return convertView;
