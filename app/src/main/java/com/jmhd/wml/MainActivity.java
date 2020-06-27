@@ -123,10 +123,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void setCalendarAdapter() {
-        calendarAdapter = new CalendarAdapter(MainActivity.this);
+    // GridView에 Adapter 연결
+   private void setCalendarAdapter() {
+        calendarAdapter = new CalendarAdapter(MainActivity.this, year, get_month);
         view_calendar.setAdapter(calendarAdapter);
-        calendarAdapter.setDate(year, get_month);
+        calendarAdapter.setDate();
     }
 
     // calendar header 가져오기 (양 옆 화살표 버튼, 년월 텍스트)
