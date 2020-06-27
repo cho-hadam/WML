@@ -6,15 +6,15 @@
     android:gravity="center" >
 
     <LinearLayout
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:id="@+id/round_view"
         android:gravity="center">
 
         <TextView
             android:id="@+id/text_date"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="15sp" />
 
