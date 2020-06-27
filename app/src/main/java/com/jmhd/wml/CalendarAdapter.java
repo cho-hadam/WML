@@ -105,5 +105,5 @@ public class CalendarAdapter extends BaseAdapter {
         int start_dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         return start_dayOfWeek;
-    }
+}
 }
