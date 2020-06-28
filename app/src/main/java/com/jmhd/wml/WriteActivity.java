@@ -14,7 +14,7 @@ public class WriteActivity extends AppCompatActivity {
     private EditText input_content;
 
 
-    DBHelper db = new DBHelper(getApplicationContext(), "DIARY.db", null, 1);
+   // DBHelper db = new DBHelper(getApplicationContext(), "WML.db", null, 1);
 
 
     @Override
@@ -30,7 +30,7 @@ public class WriteActivity extends AppCompatActivity {
         public void onClick(View view) {
             input_title = (EditText)findViewById(R.id.input_title);
             input_content = (EditText)findViewById(R.id.input_content);
-            //db.insert(date, input_title, input_content);
+            //db.insert("20200127", input_title.toString(), input_content.toString());
 
         }
     };
