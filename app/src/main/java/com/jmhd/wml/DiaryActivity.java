@@ -2,7 +2,9 @@ package com.jmhd.wml;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +15,8 @@ public class DiaryActivity extends AppCompatActivity {
     private LinearLayout layout;
     private ImageButton btn_menu;
     private Button btn_edit, btn_delete;
+    private DateInfo dateInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,10 @@ public class DiaryActivity extends AppCompatActivity {
         layout = (LinearLayout)findViewById(R.id.LinearLayout_menu);
         btn_edit = (Button)findViewById(R.id.btn_edit);
         btn_delete = (Button)findViewById(R.id.btn_delete);
+
+        /* Intent intent = getIntent();
+        dateInfo = (DateInfo) intent.getSerializableExtra("dateinfo");
+        Log.d("MyLog",dateInfo.toString()); */
 
     }
 

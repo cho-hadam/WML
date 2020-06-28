@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -93,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, DiaryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+//            DateInfo dateInfo = calendarAdapter.getDateinfo();
+//            Log.d("MyLog",dateInfo.toString());
+//            intent.putExtra("dateInfo", (Serializable) dateInfo);
+
             startActivity(intent);
             overridePendingTransition(0,0);
         }
@@ -102,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, WriteActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+            DateInfo dateInfo = calendarAdapter.getDateinfo();
+            intent.putExtra("dateInfo", (Serializable) dateInfo);
+
             startActivity(intent);
             overridePendingTransition(0,0);
         }

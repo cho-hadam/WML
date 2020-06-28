@@ -29,6 +29,10 @@ public class CalendarAdapter extends BaseAdapter {
         dateinfo = new DateInfo(String.valueOf(year),String.valueOf(get_month+1));
     }
 
+    public DateInfo getDateinfo() {
+        return this.dateinfo;
+    }
+
     @Override
     public int getCount() {
         return dateArrayList.size();
@@ -54,13 +58,8 @@ public class CalendarAdapter extends BaseAdapter {
         // calendar_date.xml에 있는 TextView
         date = (TextView) convertView.findViewById(R.id.text_date);
 
-
         // ArrayList에서 한 개 뽑아옴
         DateView dateViewItem = dateArrayList.get(position);
-
-        LinearLayout round = (LinearLayout)date.getParent();
-        round.setTag(String.valueOf(dateViewItem.getDate()));
-
 
         // 날짜 설정
         date.setText(String.valueOf(dateViewItem.getDate()));
@@ -142,5 +141,5 @@ public class CalendarAdapter extends BaseAdapter {
         int start_dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         return start_dayOfWeek;
-}
+    }
 }
