@@ -24,6 +24,7 @@ public class WriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
 
+        btn_save = (ImageButton) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(save);
 
         // 누른 날짜 알기 위해서 DateInfo 클래스 받아옴
