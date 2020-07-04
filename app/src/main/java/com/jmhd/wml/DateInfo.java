@@ -1,6 +1,8 @@
 package com.jmhd.wml;
 
-public class DateInfo {
+import java.io.Serializable;
+
+public class DateInfo implements Serializable {
     private String year;
     private String month;
     private String date;
