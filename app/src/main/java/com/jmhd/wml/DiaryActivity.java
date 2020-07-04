@@ -30,9 +30,9 @@ public class DiaryActivity extends AppCompatActivity {
         btn_edit = (Button)findViewById(R.id.btn_edit);
         btn_delete = (Button)findViewById(R.id.btn_delete);
 
-        /* Intent intent = getIntent();
-        dateInfo = (DateInfo) intent.getSerializableExtra("dateinfo");
-        Log.d("MyLog",dateInfo.toString()); */
+        // 누른 날짜 알기 위해서 DateInfo 클래스 받아옴
+        Intent intent = getIntent();
+        dateInfo = (DateInfo) intent.getSerializableExtra("dateInfo");
 
     }
 

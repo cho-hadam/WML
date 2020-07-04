@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, DiaryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-//            DateInfo dateInfo = calendarAdapter.getDateinfo();
-//            Log.d("MyLog",dateInfo.toString());
-//            intent.putExtra("dateInfo", (Serializable) dateInfo);
+            // DateInfo 클래스 넘김
+            DateInfo dateInfo = calendarAdapter.getDateinfo();
+            intent.putExtra("dateInfo", dateInfo);
 
             startActivity(intent);
             overridePendingTransition(0,0);
@@ -109,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, WriteActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
+            // DateInfo 클래스 넘김
             DateInfo dateInfo = calendarAdapter.getDateinfo();
-            intent.putExtra("dateInfo", (Serializable) dateInfo);
+            intent.putExtra("dateInfo", dateInfo);
 
             startActivity(intent);
             overridePendingTransition(0,0);

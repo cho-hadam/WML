@@ -2,6 +2,7 @@ package com.jmhd.wml;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ public class WriteActivity extends AppCompatActivity {
     private ImageButton btn_save;
     private EditText input_title;
     private EditText input_content;
+    private DateInfo dateInfo;
 
 
    // DBHelper db = new DBHelper(getApplicationContext(), "WML.db", null, 1);
@@ -23,6 +25,10 @@ public class WriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_write);
 
         btn_save.setOnClickListener(save);
+
+        // 누른 날짜 알기 위해서 DateInfo 클래스 받아옴
+        Intent intent = getIntent();
+        dateInfo = (DateInfo) intent.getSerializableExtra("dateInfo");
     }
 
     Button.OnClickListener save = new View.OnClickListener(){
