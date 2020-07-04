@@ -3,6 +3,8 @@ package com.jmhd.wml;
 import android.provider.BaseColumns;
 
 public class FeedReaderContract {
+    //DB참고
+    //https://m.blog.naver.com/PostView.nhn?blogId=pyj721aa&logNo=221291256735&proxyReferer=https:%2F%2Fwww.google.com%2F
     // To prevent someone from accidentally instantiating the contract class,
     // make the constructor private.
     private FeedReaderContract() {}
