@@ -1,6 +1,7 @@
 package com.jmhd.wml;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 public class DateInfo implements Serializable {
     private String year;
@@ -10,6 +11,16 @@ public class DateInfo implements Serializable {
     public DateInfo(String year, String month) {
         this.year = year;
         setMonth(month);
+    }
+
+    public String getNow() {
+        Calendar calendar = Calendar.getInstance();
+        String nowDate = String.valueOf(calendar.get(Calendar.DATE));
+        if (nowDate.length() == 1){ // 월이 한 자릿수일 때
+            // 앞에 0 추가
+            nowDate = "0" + nowDate;
+        }
+        return year+month+nowDate;
     }
 
     public String getYear() {
