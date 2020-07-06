@@ -3,6 +3,7 @@ package com.jmhd.wml;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +18,6 @@ public class WriteActivity extends AppCompatActivity {
     private DateInfo dateInfo;
     private TextView text_write_date;
 
-
-   // DBHelper db = new DBHelper(getApplicationContext(), "WML.db", null, 1);
 
 
     @Override
@@ -42,8 +41,18 @@ public class WriteActivity extends AppCompatActivity {
         public void onClick(View view) {
             input_title = (EditText)findViewById(R.id.input_title);
             input_content = (EditText)findViewById(R.id.input_content);
-            //db.insert("20200127", input_title.toString(), input_content.toString());
+            if(input_title == null || input_title.equals("")){
 
+            }else{
+                DBHelper helper = new DBHelper(getApplicationContext());
+                SQLiteDatabase db = helper.getWritableDatabase();
+                db.execSQL("INSERT INTO DIARY(date, title, content) VALUES (?, ?, ?)",
+                        new String[]{String.valueOf(text_write_date), String.valueOf(input_title), String.valueOf(input_content)});
+                db.close();
+
+                finish();
+
+            }
         }
     };
 
