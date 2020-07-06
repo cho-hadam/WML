@@ -51,11 +51,9 @@ public class DateClickListener implements View.OnClickListener {
             clickDate = "0" + date.getText();
         }
         if(activeBox.getVisibility() == View.INVISIBLE) { // 메뉴가 보이지 않으면
-            if (!clickDate.equals("0")) { // 누른 날짜가 0이 아니면
+            if (!clickDate.equals("00")) { // 누른 날짜가 0이 아니면
                 if (Integer.parseInt(dateInfo.getYear()+ dateInfo.getMonth()+clickDate) <= Integer.parseInt(now)) {
                     // 누른 날짜가 현재 날짜보다 이전이면 실행
-                    Log.d("MyLog",dateInfo.getYear()+ dateInfo.getMonth()+clickDate);
-                    Log.d("MyLog",now);
                     dateInfo.setDate(clickDate); // 날짜 정보에 누른 날짜 저장
                     activeBox.setVisibility(View.VISIBLE); // 메뉴 보이게
                     round.setBackground(ContextCompat.getDrawable(context, R.drawable.round)); // 동그라미 보이게

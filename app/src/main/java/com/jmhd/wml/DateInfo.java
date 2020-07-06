@@ -15,12 +15,19 @@ public class DateInfo implements Serializable {
 
     public String getNow() {
         Calendar calendar = Calendar.getInstance();
+        String nowMonth = String.valueOf(calendar.get(Calendar.MONTH)+1);
+        nowMonth = setZero(nowMonth);
         String nowDate = String.valueOf(calendar.get(Calendar.DATE));
-        if (nowDate.length() == 1){ // 월이 한 자릿수일 때
+        nowDate = setZero(nowDate);
+        return String.valueOf(calendar.get(Calendar.YEAR))+nowMonth+nowDate;
+    }
+
+    public String setZero(String date) {
+        if (date.length() == 1){ // 월이 한 자릿수일 때
             // 앞에 0 추가
-            nowDate = "0" + nowDate;
+            date = "0" + date;
         }
-        return year+month+nowDate;
+        return date;
     }
 
     public String getYear() {
