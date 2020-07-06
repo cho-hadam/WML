@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 public class WriteActivity extends AppCompatActivity {
     private ImageButton btn_save;
+    private ImageButton btn_back;
     private EditText input_title;
     private EditText input_content;
     private DateInfo dateInfo;
@@ -34,7 +35,16 @@ public class WriteActivity extends AppCompatActivity {
 
         btn_save = (ImageButton) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(save);
+
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
     }
+
+    Button.OnClickListener backDiary = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            WriteActivity.this.finish();
+        }
+    };
 
     Button.OnClickListener save = new View.OnClickListener(){
         @Override
