@@ -59,7 +59,8 @@
             android:textColorHint="#A8A8A8"
             android:backgroundTint="#A8A8A8"
             android:textSize="15sp"
-            android:hint="    제목을 입력하세요." />
+            android:hint="    제목을 입력하세요."
+            />
 
         <EditText
             android:id="@+id/input_content"
@@ -84,7 +85,7 @@
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/image_icon"/>
+            android:src="@drawable/image_icon"/>
 
         </LinearLayout>
 
