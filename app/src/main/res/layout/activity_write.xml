@@ -70,7 +70,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
             android:layout_weight="3"
-            android:background="@drawable/border_edit_text"
+            android:background="@drawable/focused_check"
             android:gravity="top"
             android:inputType="textMultiLine|textNoSuggestions"
             android:textSize="15sp"
@@ -88,7 +88,7 @@
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-            android:src="@drawable/image_icon"/>
+                android:src="@drawable/image_icon"/>
 
         </LinearLayout>
 
