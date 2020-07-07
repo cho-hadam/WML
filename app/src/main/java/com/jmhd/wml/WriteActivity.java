@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,10 +53,12 @@ public class WriteActivity extends AppCompatActivity {
             input_title = (EditText)findViewById(R.id.input_title);
             input_content = (EditText)findViewById(R.id.input_content);
             if(input_title == null || input_title.equals("")){
-
+                Log.d("Onclick", "if");
             }else{
+                Log.d("Onclick", "else");
                 DBHelper helper = new DBHelper(getApplicationContext());
                 SQLiteDatabase db = helper.getWritableDatabase();
+
                 db.execSQL("INSERT INTO DIARY(date, title, content) VALUES (?, ?, ?)",
                         new String[]{String.valueOf(text_write_date), String.valueOf(input_title), String.valueOf(input_content)});
                 db.close();

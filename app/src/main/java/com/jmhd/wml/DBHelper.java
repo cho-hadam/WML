@@ -21,6 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "title TEXT, " +
                 "content TEXT, " +
                 "photo BLOB)";
+        db.execSQL(createSql);
     }
 
     @Override
