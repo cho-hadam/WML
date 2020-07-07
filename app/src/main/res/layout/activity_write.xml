@@ -78,6 +78,7 @@
             android:hint="내용을 입력하세요." />
 
         <LinearLayout
+            android:id="@+id/image_box"
             android:layout_width="300dp"
             android:layout_height="0dp"
             android:layout_weight="1.5"
@@ -86,6 +87,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/user_image"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:src="@drawable/image_icon"/>
