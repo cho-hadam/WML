@@ -38,9 +38,10 @@ public class WriteActivity extends AppCompatActivity {
         btn_save.setOnClickListener(save);
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(backCalendar);
     }
 
-    Button.OnClickListener backDiary = new View.OnClickListener() {
+    Button.OnClickListener backCalendar = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             WriteActivity.this.finish();
