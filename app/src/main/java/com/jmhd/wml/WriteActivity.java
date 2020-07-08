@@ -1,26 +1,36 @@
 package com.jmhd.wml;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WriteActivity extends AppCompatActivity {
     private ImageButton btn_save;
     private ImageButton btn_back;
     private EditText input_title;
     private EditText input_content;
-    private DateInfo dateInfo;
+    private LinearLayout image_box;
     private TextView text_write_date;
-
-
+    private DateInfo dateInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,74 @@ public class WriteActivity extends AppCompatActivity {
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(backCalendar);
+
+        image_box = (LinearLayout) findViewById(R.id.image_box);
+        image_box.setOnClickListener(addImage);
+    }
+
+    private void checkImagePermission() {
+        // 권한이 승인인지 거절인지 확인
+        int permission = ContextCompat.checkSelfPermission(WriteActivity.this, Manifest.permission.CAMERA);
+
+        if (permission == PackageManager.PERMISSION_DENIED) { // 권한이 없다면
+            // 권한 요청
+            ActivityCompat.requestPermissions(WriteActivity.this, new String[] {Manifest.permission.CAMERA}, 0);
+        } else {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 1);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "카메라 권한 승인 완료", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "카메라 권한 승인 거절", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    Button.OnClickListener addImage = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            PopupMenu popupMenu = new PopupMenu(getApplicationContext(), view);
+            getMenuInflater().inflate(R.menu.image_menu, popupMenu.getMenu());
+
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem menuItem) {
+                    switch (menuItem.getItemId()) {
+                        case R.id.menu_camera:
+//                            startCamera();
+                            break;
+
+                        case R.id.menu_gallery:
+//                            getAlbum();
+                    }
+                    return true;
+                }
+            });
+
+            popupMenu.show();
+            checkImagePermission();
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.image_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == 1) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     Button.OnClickListener backCalendar = new View.OnClickListener() {

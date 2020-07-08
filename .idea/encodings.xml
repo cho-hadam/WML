@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+<<<<<<< HEAD
     <file url="file://$USER_HOME$/OneDrive/문서/AndroidStudio/DeviceExplorer/Pixel_2_API_30 [emulator-5554]/data/data/com.jmhd.wml/databases/WML.db" charset="ISO-8859-1" />
+=======
+    <file url="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/com.jmhd.wml/databases/WML.db" charset="UTF-8" />
+>>>>>>> 2db2ac4ec615372f7bc61019363930cc2529c9aa
   </component>
 </project>
