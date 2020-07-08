@@ -1,16 +1,23 @@
 package com.jmhd.wml;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WriteActivity extends AppCompatActivity {
     private ImageButton btn_save;
@@ -39,6 +46,30 @@ public class WriteActivity extends AppCompatActivity {
 
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(backCalendar);
+
+        checkImagePermission();
+    }
+
+    private void checkImagePermission() {
+        int permission = ContextCompat.checkSelfPermission(WriteActivity.this, Manifest.permission.CAMERA);
+
+        if (permission == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(WriteActivity.this, new String[] {Manifest.permission.CAMERA}, 0);
+        } else {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 1);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "카메라 권한 승인 완료", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "카메라 권한 승인 거절", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     Button.OnClickListener backCalendar = new View.OnClickListener() {
