@@ -1,29 +1,39 @@
 package com.jmhd.wml;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class WriteActivity extends AppCompatActivity {
+    private static final int PICK_IMAGE = 49;
+
+    private Uri imageURI;
     private ImageButton btn_save;
     private ImageButton btn_back;
     private EditText input_title;
@@ -31,6 +41,7 @@ public class WriteActivity extends AppCompatActivity {
     private LinearLayout image_box;
     private TextView text_write_date;
     private DateInfo dateInfo;
+    private ImageView user_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,72 +63,67 @@ public class WriteActivity extends AppCompatActivity {
 
         image_box = (LinearLayout) findViewById(R.id.image_box);
         image_box.setOnClickListener(addImage);
+
+        user_image = (ImageView) findViewById(R.id.user_image);
+    }
+
+    private void getScreenSize() {
+
     }
 
     private void checkImagePermission() {
-        // 권한이 승인인지 거절인지 확인
-        int permission = ContextCompat.checkSelfPermission(WriteActivity.this, Manifest.permission.CAMERA);
-
-        if (permission == PackageManager.PERMISSION_DENIED) { // 권한이 없다면
-            // 권한 요청
-            ActivityCompat.requestPermissions(WriteActivity.this, new String[] {Manifest.permission.CAMERA}, 0);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_IMAGE);
         } else {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, 1);
+            getImage();
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 0) {
+        if (requestCode == PICK_IMAGE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "카메라 권한 승인 완료", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "갤러리 권한 승인 완료", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "카메라 권한 승인 거절", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "갤러리 권한 승인 거절", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    public void getImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+        startActivityForResult(intent, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE) {
+            if (resultCode == Activity.RESULT_OK) {
+                imageURI = data.getData();
+                setImage(imageURI);
+            }
+        }
+    }
+
+    private void setImage(Uri uri) {
+        try {
+            InputStream is = getContentResolver().openInputStream(uri);
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+            user_image.setImageBitmap(bitmap);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
     Button.OnClickListener addImage = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            PopupMenu popupMenu = new PopupMenu(getApplicationContext(), view);
-            getMenuInflater().inflate(R.menu.image_menu, popupMenu.getMenu());
-
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    switch (menuItem.getItemId()) {
-                        case R.id.menu_camera:
-//                            startCamera();
-                            break;
-
-                        case R.id.menu_gallery:
-//                            getAlbum();
-                    }
-                    return true;
-                }
-            });
-
-            popupMenu.show();
             checkImagePermission();
         }
     };
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.image_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == 1) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     Button.OnClickListener backCalendar = new View.OnClickListener() {
         @Override
