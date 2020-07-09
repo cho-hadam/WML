@@ -137,10 +137,8 @@ public class WriteActivity extends AppCompatActivity {
                 Log.d("Onclick", "else");
                 DBHelper helper = new DBHelper(getApplicationContext());
                 SQLiteDatabase db = helper.getWritableDatabase();
-                Log.d("Insert", String.valueOf(input_title));
-                db.execSQL("INSERT INTO DIARY(date, title, content) VALUES ("  + "20200127" + ", "
-                        + "title" +
-                                ", " +"content"+ ");");
+                db.execSQL("INSERT INTO DIARY(date, title, content) VALUES ('"+ dateInfo.toString() + "', '" + input_title.getText().toString() + "', '" + input_content.getText().toString()+"')");
+                Log.d("insert", "insert");
                 db.close();
 
                 finish();
