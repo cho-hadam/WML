@@ -141,12 +141,6 @@ public class WriteActivity extends AppCompatActivity {
                 Log.d("Onclick", "if");
             }else{
                 Log.d("Onclick", "else");
-                DBHelper helper = new DBHelper(getApplicationContext());
-                SQLiteDatabase db = helper.getWritableDatabase();
-                db.execSQL("INSERT INTO DIARY(date, title, content) VALUES ('"+ dateInfo.toString() + "', '" + input_title.getText().toString() + "', '" + input_content.getText().toString()+"')");
-                Log.d("insert", "insert");
-                db.close();
-
                 finish();
 
             }
