@@ -108,10 +108,14 @@ public class WriteActivity extends AppCompatActivity {
     }
 
     private void setImage(Uri uri) {
+        ImageView img;
         try {
             InputStream is = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
-            user_image.setImageBitmap(bitmap);
+            // user_image.setImageBitmap(bitmap);
+            img = new ImageView(this);
+            img.setImageBitmap(bitmap);
+            image_box.addView(img);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
