@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
@@ -93,6 +94,7 @@ public class WriteActivity extends AppCompatActivity {
     public void getImage() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         startActivityForResult(intent, PICK_IMAGE);
     }
 
@@ -101,22 +103,35 @@ public class WriteActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
-                imageURI = data.getData();
-                setImage(imageURI);
+                if (data != null) {
+                    if (data.getClipData() == null) {
+                        Toast.makeText(this, "다중 선택이 불가한 기기입니다.", Toast.LENGTH_LONG).show();
+                    } else {
+                        ClipData clipData = data.getClipData();
+                        if (clipData.getItemCount() > 4) {
+                            Toast.makeText(this, "4장 이내로 선택해주세요.", Toast.LENGTH_LONG).show();
+                        } else {
+                            for (int i = 0; i < clipData.getItemCount(); i++) {
+                                imageURI = clipData.getItemAt(i).getUri();
+                                setImage(imageURI);
+                            }
+                        }
+                    }
+                }
+//                imageURI = data.getData();
+//                setImage(imageURI);
             }
         }
     }
 
     private void setImage(Uri uri) {
-        ImageView img;
         try {
             InputStream is = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
-            // user_image.setImageBitmap(bitmap);
-            img = new ImageView(this);
+            ImageView img = new ImageView(this);
             img.setImageBitmap(bitmap);
             image_box.addView(img);
-
+            user_image.setVisibility(View.GONE);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

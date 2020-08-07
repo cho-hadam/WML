@@ -88,9 +88,9 @@
 
             <ImageView
                 android:id="@+id/user_image"
-                android:layout_width="28dp"
+                android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:src="@drawable/image_icon"/>
+                android:src="@drawable/image_icon" />
 
         </LinearLayout>
 
