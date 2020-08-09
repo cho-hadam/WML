@@ -9,17 +9,18 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -39,10 +40,11 @@ public class WriteActivity extends AppCompatActivity {
     private ImageButton btn_back;
     private EditText input_title;
     private EditText input_content;
+    private LinearLayout add_image;
     private LinearLayout image_box;
     private TextView text_write_date;
     private DateInfo dateInfo;
-    private ImageView user_image;
+    private ImageView basic_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +64,12 @@ public class WriteActivity extends AppCompatActivity {
         btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(backCalendar);
 
+        add_image = (LinearLayout) findViewById(R.id.add_image);
+        add_image.setOnClickListener(addImage);
+
         image_box = (LinearLayout) findViewById(R.id.image_box);
-        image_box.setOnClickListener(addImage);
 
-        user_image = (ImageView) findViewById(R.id.user_image);
-    }
-
-    private void getScreenSize() {
-
+        basic_image = (ImageView) findViewById(R.id.basic_image);
     }
 
     private void checkImagePermission() {
@@ -118,20 +118,23 @@ public class WriteActivity extends AppCompatActivity {
                         }
                     }
                 }
-//                imageURI = data.getData();
-//                setImage(imageURI);
             }
         }
     }
 
     private void setImage(Uri uri) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         try {
             InputStream is = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
-            ImageView img = new ImageView(this);
-            img.setImageBitmap(bitmap);
-            image_box.addView(img);
-            user_image.setVisibility(View.GONE);
+            ImageView user_image = (ImageView) inflater.inflate(R.layout.user_image, null);
+//            ImageView img = new ImageView(this);
+//            img.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//            img.setImageBitmap(bitmap);
+            user_image.setImageBitmap(bitmap);
+            image_box.addView(user_image);
+            image_box.setVisibility(View.VISIBLE);
+            basic_image.setVisibility(View.GONE);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
