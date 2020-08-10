@@ -20,12 +20,12 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -127,11 +127,15 @@ public class WriteActivity extends AppCompatActivity {
         try {
             InputStream is = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
-            ImageView user_image = (ImageView) inflater.inflate(R.layout.user_image, null);
+            // user_image.xml
+            View cv = inflater.inflate(R.layout.user_image, null);
+            // user_image.xml 안에 있는 ImageView
+            ImageView user_image = (ImageView) cv.findViewById(R.id.user_image);
             user_image.setImageBitmap(bitmap);
             image_box.addView(user_image);
             image_box.setVisibility(View.VISIBLE);
             basic_image.setVisibility(View.GONE);
+            add_image.setVisibility(View.GONE);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

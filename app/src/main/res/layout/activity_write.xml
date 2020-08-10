@@ -70,7 +70,7 @@
             <EditText
                 android:id="@+id/input_content"
                 android:layout_width="300dp"
-                android:layout_height="350dp"
+                android:layout_height="300dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/focused_check"
                 android:gravity="top"
@@ -82,27 +82,28 @@
             <LinearLayout
                 android:id="@+id/add_image"
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="180dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="60dp"
                 android:background="@drawable/border_edit_text"
                 android:gravity="center"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/image_box"
-                    android:visibility="gone"
-                    android:orientation="vertical">
-
-
-                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/basic_image"
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
                     android:src="@drawable/image_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/image_box"
+                android:visibility="gone"
+                android:orientation="vertical">
+
 
             </LinearLayout>
 
