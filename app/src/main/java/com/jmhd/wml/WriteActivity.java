@@ -128,9 +128,6 @@ public class WriteActivity extends AppCompatActivity {
             InputStream is = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
             ImageView user_image = (ImageView) inflater.inflate(R.layout.user_image, null);
-//            ImageView img = new ImageView(this);
-//            img.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//            img.setImageBitmap(bitmap);
             user_image.setImageBitmap(bitmap);
             image_box.addView(user_image);
             image_box.setVisibility(View.VISIBLE);

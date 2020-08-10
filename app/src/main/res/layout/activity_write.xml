@@ -42,69 +42,71 @@
 
     </LinearLayout>
 
-    <!-- 쓰는 화면 -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.5"
-        android:orientation="vertical"
-        android:weightSum="5"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/input_title"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:maxLength="15"
-            android:textColorHint="#A8A8A8"
-            android:backgroundTint="#A8A8A8"
-            android:textSize="15sp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:hint="제목을 입력하세요." />
-
-
-        <EditText
-            android:id="@+id/input_content"
-            android:layout_width="300dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="3"
-            android:background="@drawable/focused_check"
-            android:gravity="top"
-            android:inputType="textMultiLine|textNoSuggestions"
-            android:textSize="15sp"
-            android:padding="20dp"
-            android:hint="내용을 입력하세요." />
-
+        android:layout_weight="9">
+        <!-- 쓰는 화면 -->
         <LinearLayout
-            android:id="@+id/add_image"
-            android:layout_width="300dp"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/border_edit_text"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/input_title"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:maxLength="15"
+                android:textColorHint="#A8A8A8"
+                android:backgroundTint="#A8A8A8"
+                android:textSize="15sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="30dp"
+                android:hint="제목을 입력하세요." />
+
+
+            <EditText
+                android:id="@+id/input_content"
+                android:layout_width="300dp"
+                android:layout_height="350dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/focused_check"
+                android:gravity="top"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:textSize="15sp"
+                android:padding="20dp"
+                android:hint="내용을 입력하세요." />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/image_box"
-                android:visibility="gone"
+                android:id="@+id/add_image"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_edit_text"
+                android:gravity="center"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/image_box"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/basic_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:src="@drawable/image_icon" />
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/basic_image"
-                android:layout_width="wrap_content"
-                android:layout_height="28dp"
-                android:src="@drawable/image_icon" />
-
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

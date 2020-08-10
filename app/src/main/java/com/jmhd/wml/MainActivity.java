@@ -15,6 +15,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    private final int NEXT_BUTTON = 1;
+    private final int BACK_BUTTON = -1;
     private Button btn_diary;
     private Button btn_view;
     private Button btn_write;
@@ -122,14 +124,14 @@ public class MainActivity extends AppCompatActivity {
     Button.OnClickListener backMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            setHeader(-1);
+            setHeader(BACK_BUTTON);
             setCalendarAdapter();
         }
     };
     Button.OnClickListener nextMonth = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            setHeader(1);
+            setHeader(NEXT_BUTTON);
             setCalendarAdapter();
         }
     };
@@ -159,14 +161,14 @@ public class MainActivity extends AppCompatActivity {
                 "December"
         };
 
-        if (click == 1) { // next button click
+        if (click == NEXT_BUTTON) { // next button click
             if (get_month != 11) { // 12월이 아닐 경우
                 get_month += 1; // 월 인덱스 증가
             } else { // 12월일 경우
                 year += 1; // 년도 증가
                 get_month = 0; // 월 초기화 (1월)
             }
-        } else if (click == -1) { // back button click
+        } else if (click == BACK_BUTTON) { // back button click
             if (get_month != 0) { // 1월이 아닐 경우
                 get_month -= 1; // 월 인덱스 감소
             } else { // 1월일 경우
