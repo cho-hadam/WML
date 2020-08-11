@@ -72,6 +72,7 @@ public class WriteActivity extends AppCompatActivity {
         basic_image = (ImageView) findViewById(R.id.basic_image);
     }
 
+    // 권한 체크
     private void checkImagePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_IMAGE);
@@ -132,8 +133,11 @@ public class WriteActivity extends AppCompatActivity {
             // user_image.xml 안에 있는 ImageView
             ImageView user_image = (ImageView) cv.findViewById(R.id.user_image);
             user_image.setImageBitmap(bitmap);
+            // 레이아웃에 이미지 추가
             image_box.addView(user_image);
+            // 이미지 삽입한 레이아웃 보이도록 함
             image_box.setVisibility(View.VISIBLE);
+            // 초기 이미지와 클릭 레이아웃 안 보이도록 설정
             basic_image.setVisibility(View.GONE);
             add_image.setVisibility(View.GONE);
         } catch (FileNotFoundException e) {
