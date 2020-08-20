@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DBConnection dc = new DBConnection();
+        dc.connectDB();
+
         // 변수들 값 가져오기
         defineVar();
 
