@@ -127,11 +127,26 @@ public class WriteActivity extends AppCompatActivity {
         try {
             InputStream is = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
+            //bitmap 크기 조절
+            int viewHeight = 412;
+            float width = bitmap.getWidth();
+            float height = bitmap.getHeight();
+
+            if(height > viewHeight)
+            {
+                float percente = (float)(height/100);
+                float scale = (float)(viewHeight / percente);
+                width *= (scale / 100);
+                height *= (scale / 100);
+            }
+
+            Bitmap sizeingBmp = Bitmap.createScaledBitmap(bitmap, (int)width, (int)height, true);
             // user_image.xml
             View cv = inflater.inflate(R.layout.user_image, null);
             // user_image.xml 안에 있는 ImageView
             ImageView user_image = (ImageView) cv.findViewById(R.id.user_image);
-            user_image.setImageBitmap(bitmap);
+
+            user_image.setImageBitmap(sizeingBmp);
             image_box.addView(user_image);
             image_box.setVisibility(View.VISIBLE);
             basic_image.setVisibility(View.GONE);
@@ -169,6 +184,4 @@ public class WriteActivity extends AppCompatActivity {
             }
         }
     };
-
-
 }
