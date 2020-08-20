@@ -1,21 +1,20 @@
 package com.jmhd.wml;
 
-import java.sql.Blob;
-import java.sql.Date;
+import android.graphics.Bitmap;
 
 public class DiaryData {
-    private Date date;
+    private String date;
     private String title;
     private String content;
-    private Blob photo;
+    private Bitmap[] photo;
 
     public DiaryData() { }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -35,11 +34,11 @@ public class DiaryData {
         this.content = content;
     }
 
-    public Blob getPhoto() {
+    public Bitmap[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Blob photo) {
+    public void setPhoto(Bitmap[] photo) {
         this.photo = photo;
     }
 }
